@@ -1,4 +1,5 @@
 import 'package:brew_crew/services/auth.dart';
+import 'package:brew_crew/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -44,6 +45,7 @@ class _SignInState extends State<SignIn> {
             children: <Widget>[
               SizedBox(height: 20.0),
               TextFormField(
+                decoration: kTextInputDecoration.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
                 onChanged: (val) {
                   setState(() {
@@ -53,9 +55,9 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20.0),
               TextFormField(
+                decoration: kTextInputDecoration.copyWith(hintText: 'Password'),
                 obscureText: true,
-                validator: (val) =>
-                    val.length < 6 ? 'Enter an password 6+ chars long' : null,
+                validator: (val) => val.length < 6 ? 'Enter an password 6+ chars long' : null,
                 onChanged: (val) {
                   setState(() {
                     password = val;
@@ -72,11 +74,9 @@ class _SignInState extends State<SignIn> {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     // print('valid');
-                    dynamic result =
-                        await _auth.signInWithEmailAndPassword(email, password);
+                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
                     if (result == null) {
-                      setState(() =>
-                          error = 'could not sign in with those credentials');
+                      setState(() => error = 'could not sign in with those credentials');
                     }
                   }
                 },
