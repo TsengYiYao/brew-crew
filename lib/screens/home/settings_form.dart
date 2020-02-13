@@ -75,9 +75,6 @@ class _SettingsFormState extends State<SettingsForm> {
                         );
                         Navigator.pop(context);
                       }
-                      //print("_currentName=");
-//                      print("_currentSugars=" + _currentSugars);
-//                      print("_currentStrength=" + _currentStrength.toString());
                     },
                   ),
                 ],
